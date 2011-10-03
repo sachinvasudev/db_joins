@@ -23,7 +23,7 @@ else
 					$bgroup=addslashes($_POST['bgroup']);
 					$addrs=((nl2br(htmlspecialchars($_POST['address']))));
 					$status = $_POST['status'];
-					$allowance = $_POST['allowance'];
+					$allowance = $_POST['Allowance'];
 				}
 			else {
 					
@@ -34,7 +34,7 @@ else
 					$bgroup=addslashes($_POST['bgroup']);
 					$addrs=addslashes((nl2br(htmlspecialchars($_POST['address']))));
 					$status = $_POST['status'];
-					$allowance = $_POST['allowance'];
+					$allowance = $_POST['Allowance'];
 	  			 }
 				
 				
@@ -228,6 +228,10 @@ else
 							<button type="button">View</button>
 						</a>
 						
+						
+				<a href="admin.php">
+				<button type="button">Admin</button>
+					</a>
 					</td>
 					
 					
