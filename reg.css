@@ -1,0 +1,159 @@
+p
+{
+margin-bottom:0px;
+
+}
+
+body.page2
+{
+	text-align:center;
+	font-family:Verdana;
+	font-size:16px;
+}
+
+table
+{
+	margin:auto;
+}
+
+.toptext
+{
+ font-weight: bold;
+ font-family:verdana;
+ font-size:16px;
+ }
+
+ .bottomtext
+ {
+ font-size:9pt;
+
+ }
+
+ h1
+ {
+ color:#002EB8;
+ 
+
+ font-family:verdana;
+ font-weight:normal;
+ font-size:16pt;
+ margin-bottom:0px;
+  }
+
+   h2
+ {
+ 	
+ font-family:verdana;
+ font-weight:normal;
+ font-size:8pt;
+ margin-top:0px;
+ color:#002EB8;
+ 
+ }
+ 
+  h2.page2{
+ font-family:verdana;
+ font-weight:normal;
+ font-size:12pt;
+ margin-top:0px;
+ 
+ }
+ 
+ h2.empl
+ {   
+  font-family:verdana;
+ font-weight:normal;
+ font-size:14pt;
+ margin-top:0px;
+ color:#002EB8;
+ }
+ 
+  h3.empl
+ {   
+  font-family:verdana;
+ font-weight:normal;
+ font-size:13pt;
+ margin-top:0px;
+ color:#002EB8;
+ }
+ 
+ a
+ {
+ 	text-decoration: none;
+ }
+
+table.page2
+{
+	font-family:verdana;
+	font-weight:normal;
+	font-size:17px;
+	border-collapse:collapse;
+}
+
+input[type="text"]
+{
+	font-family: verdana;
+	font-size:17px;
+	 background: inherit;
+	
+}
+
+button,input[type="submit"],input[type="reset"]
+{
+	font-family: verdana;
+	font-size:17px;
+	background-color: #DEAD7D;
+}
+
+button:hover,input[type="submit"]:hover,input[type="reset"]:hover
+{
+	font-family: verdana;
+	font-size:17px;
+	color:#634221;
+	
+}
+
+select
+{
+	font-family:verdana;
+	font-size:17px;
+	
+}
+
+option
+{
+	 background: inherit;
+}
+
+textarea.page2
+{
+	font-family:verdana;
+	font-size:17px;
+}
+
+th
+{
+	background-color:#AECCEA;
+}
+
+.inactive
+{
+	background-color:#EAAEAE
+}
+
+.active
+{
+	background-color:#AEEAAE
+}
+
+tr.hv:hover 
+{ background: #FEE680; }
+
+div.error
+{
+    text-align:center;	
+    font-weight:bold;
+	color:red;
+	font-family: Verdana;
+	font-size:17px;
+}
