@@ -10,7 +10,6 @@ else
 
 session_start();
 
-isLoggedIn("admin");
 
 
 $con = dbConnect();
@@ -43,10 +42,6 @@ $con = dbConnect();
 			<tr >
 				
 				<th>
-					Username
-				</th>
-				
-				<th>
 					Name
 				</th>
 				
@@ -55,7 +50,15 @@ $con = dbConnect();
 				</th>
 				
 				<th>
-					Occupation
+					Designation
+				</th>
+				
+				<th>
+					Salary
+				</th>
+				
+				<th>
+					Blood Group
 				</th>
 				
 				<th>
@@ -63,8 +66,9 @@ $con = dbConnect();
 				</th>
 				
 				<th>
-					Status
+					Major/Minor
 				</th>
+			
 			</tr>
 			
 			
@@ -73,28 +77,62 @@ $con = dbConnect();
 if(isset($_POST['search']))
 {
 	$searchString = $_POST['query'];
-	$query = "SELECT *
-FROM sachin_employee
-WHERE name LIKE '%$searchString%'
-OR username LIKE'$searchString%'
-OR address LIKE '%$searchString%'
-ORDER BY name
+	$query = "
+	
+select concat(emp.first_name,' ',emp.last_name) as name,
+emp.address,emp.age,desg.desig_name,
+(desg.salary+emp.allowance) as salary,blood.blood_name,
+IF(age>22, 'Major', 'Minor') AS class
+
+from sachin_p1_employee as emp
+
+left join sachin_p1_designation as desg
+on emp.desig_code=desg.desig_code 
+
+LEFT JOIN sachin_p1_blood as blood
+on emp.blood_code=blood.blood_code
+
+where status=1
+AND ( 
+first_name LIKE'$searchString%'
+OR last_name LIKE'$searchString%'
+OR address LIKE '%$searchString%')
+order by class
+	
+	
 ";
 	
 }
 else		
-$query = "SELECT * 
-FROM sachin_employee
-order by name
+$query = "select concat(emp.first_name,' ',emp.last_name) as name,
+emp.address,emp.age,desg.desig_name,
+(desg.salary+emp.allowance) as salary,blood.blood_name,
+IF(age>22, 'Major', 'Minor') AS class
+
+from sachin_p1_employee as emp
+
+left join sachin_p1_designation as desg
+on emp.desig_code=desg.desig_code 
+
+LEFT JOIN sachin_p1_blood as blood
+on emp.blood_code=blood.blood_code
+
+where status=1
+order by class
+
 ";
 
 $result = mysql_query($query) or die("Error running query");
 while($employee =mysql_fetch_assoc($result))
-{		
+{
+		
+	
+					
 		
 ?>
-			<?php
-			if($employee['status']=="Active")
+
+		<?php
+			if($employee['class']=="Major")
 				echo '<tr class="active hv">';
 			else 
 				echo '<tr class="inactive hv">';
@@ -103,9 +141,7 @@ while($employee =mysql_fetch_assoc($result))
 			?>
 			
 				
-				<td>
-					<?php echo $employee['username']?>
-				</td>
+				
 				
 				<td>
 					<?php echo $employee['name']?>
@@ -116,7 +152,15 @@ while($employee =mysql_fetch_assoc($result))
 				</td>
 				
 				<td>
-					<?php echo $employee['occupation']?>
+					<?php echo $employee['desig_name']?>
+				</td>
+				
+				<td>
+					<?php echo $employee['salary']?>
+				</td>
+				
+				<td>
+					<?php echo $employee['blood_name']?>
 				</td>
 				
 				<td>
@@ -124,8 +168,10 @@ while($employee =mysql_fetch_assoc($result))
 				</td>
 				
 				<td>
-					<?php echo $employee['status']?>
+					<?php echo $employee['class']?>
 				</td>
+				
+				
 			</tr>
 			<?php
 }
@@ -136,13 +182,8 @@ mysql_close($con);
 		
 	<br/>
 	
-	<a href="logout.php">
-		<button type="button">Logout</button>
-	</a>
-	<a href="edit.php">
-		<button type="button">Edit Employees</button>
-	</a>
-	<a href="add.php">
+	
+	<a href="register.php">
 		<button type="button">Add Employees</button>
 	</a>
 	

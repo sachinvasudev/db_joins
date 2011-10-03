@@ -23,6 +23,7 @@ else
 					$bgroup=addslashes($_POST['bgroup']);
 					$addrs=((nl2br(htmlspecialchars($_POST['address']))));
 					$status = $_POST['status'];
+					$allowance = $_POST['allowance'];
 				}
 			else {
 					
@@ -33,6 +34,7 @@ else
 					$bgroup=addslashes($_POST['bgroup']);
 					$addrs=addslashes((nl2br(htmlspecialchars($_POST['address']))));
 					$status = $_POST['status'];
+					$allowance = $_POST['allowance'];
 	  			 }
 				
 				
@@ -45,14 +47,14 @@ else
 			
 				
 				
-						$query = "INSERT INTO sachin_p1_employee (first_name,last_name,age,address,desig_code,blood_code,status)
+						$query = "INSERT INTO sachin_p1_employee (first_name,last_name,age,address,desig_code,blood_code,allowance,status)
 						 VALUES
-(						 '$first_name','$last_name','$age','$addrs','$design',$bgroup,'$status')";
+(						 '$first_name','$last_name','$age','$addrs','$design',$bgroup,'$allowance','$status')";
 
 				mysql_query($query,$con) or die("Could not run query");
 				
 				
-				header('Location: register.php');
+				header('Location: view.php');
 				exit();
 						
 					
@@ -68,7 +70,9 @@ else
 	$age="";
 	$occpn="";
 	$addrs="";
+	$allowance ="";
 	$status = "";
+
 	
 	$desig_query= "SELECT * FROM sachin_p1_designation";
 	$result_desig = mysql_query($desig_query);
@@ -149,6 +153,16 @@ else
 				
 				<tr>
 					<td>
+					<p class="toptext">
+						Allowance
+					</p></td>
+					<td>
+					<input type="text" class="num" value="<?php echo $allowance;?>" maxlength="10" size="20" name="Allowance"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
 						<p  class="toptext">
 							Blood Group
 						</p>
@@ -177,13 +191,16 @@ else
 						<p  class="toptext">
 						Address
 						</p>
-				</td>
+					</td>
+				
 				
 				
 				<td>
 					<textarea id="address" name="address" rows="5" cols="25"><?php echo $addrs;?></textarea>
 					
 				</td>
+				
+				
 				
 				<tr>
 					<td>
@@ -207,8 +224,8 @@ else
 					<td colspan="2" style="text-align: center">
 						<input type="reset" value"Reset" name="reset"/>
 						<input type="submit" value="Submit" name="submit"/>
-						<a href="index.php">
-							<button type="button">Home</button>
+						<a href="view.php">
+							<button type="button">View</button>
 						</a>
 						
 					</td>
