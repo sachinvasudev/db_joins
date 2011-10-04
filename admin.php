@@ -148,7 +148,6 @@ header("Location:register.php");
 		
 		
 	</body>
-	<script type="text/javascript" src="admin.js"></script>
 	
 	
 </html>
