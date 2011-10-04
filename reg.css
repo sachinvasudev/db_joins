@@ -1,3 +1,48 @@
+div#wrapper
+{
+	width:760px;
+ margin:0 auto;
+}
+
+ul#navigation
+{
+	
+	padding:0;
+	list-style:none;
+	width:525px;
+	text-align:center;
+	
+}
+
+div#cese
+{
+	margin: 50px 0px 50px 250px;
+	
+}
+
+ul#navigation li
+{
+display:inline
+}
+
+ul#navigation li a 
+{
+text-decoration:none;
+padding:5px 0;
+width:100px;
+background:#485e49;
+color:#eee;
+float:left;
+text-align:center;
+border-left:1px solid #fff;
+}
+
+ul#navigation li a:hover 
+{
+background:#a2b3a1;
+color:#000
+}
+
 p
 {
 margin-bottom:0px;

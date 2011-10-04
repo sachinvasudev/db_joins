@@ -84,12 +84,19 @@ else
 }
 
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+	
+
 <html>
 	<head>
 		<title> Employee Registration </title>
 		<link type="text/css" rel="stylesheet" href="reg.css"/>
 	</head>
 	<body>
+		<div id="wrapper">
+	
+		
 		<form method="post" action="register.php" name="regist" onsubmit="return validate2();"enctype="multipart/form-data">
 			<table border="0">
 				
@@ -253,6 +260,7 @@ else
 			<script>
 				window.onload=document.getElementById("firstName").focus();
 			</script>
+			</div>
 			</body>
 
 			<script type="text/javascript" src="validate.js"></script>

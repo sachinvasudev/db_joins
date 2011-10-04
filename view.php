@@ -68,6 +68,10 @@ $con = dbConnect();
 				<th>
 					Major/Minor
 				</th>
+				
+				<th>
+					Status
+				</th>
 			
 			</tr>
 			
@@ -79,10 +83,10 @@ if(isset($_POST['search']))
 	$searchString = $_POST['query'];
 	$query = "
 	
-select concat(emp.first_name,' ',emp.last_name) as name,
+select emp.id,concat(emp.first_name,' ',emp.last_name) as name,
 emp.address,emp.age,desg.desig_name,
 (desg.salary+emp.allowance) as salary,blood.blood_name,
-IF(age>22, 'Major', 'Minor') AS class
+IF(age>22, 'Major', 'Minor') AS class,emp.status
 
 from sachin_p1_employee as emp
 
@@ -92,8 +96,8 @@ on emp.desig_code=desg.desig_code
 LEFT JOIN sachin_p1_blood as blood
 on emp.blood_code=blood.blood_code
 
-where status=1
-AND ( 
+
+WHERE ( 
 first_name LIKE'$searchString%'
 OR last_name LIKE'$searchString%'
 OR address LIKE '%$searchString%')
@@ -104,10 +108,10 @@ order by class
 	
 }
 else		
-$query = "select concat(emp.first_name,' ',emp.last_name) as name,
+$query = "select emp.id,concat(emp.first_name,' ',emp.last_name) as name,
 emp.address,emp.age,desg.desig_name,
 (desg.salary+emp.allowance) as salary,blood.blood_name,
-IF(age>22, 'Major', 'Minor') AS class
+IF(age>22, 'Major', 'Minor') AS class,emp.status
 
 from sachin_p1_employee as emp
 
@@ -117,7 +121,7 @@ on emp.desig_code=desg.desig_code
 LEFT JOIN sachin_p1_blood as blood
 on emp.blood_code=blood.blood_code
 
-where status=1
+
 order by class
 
 ";
@@ -132,7 +136,7 @@ while($employee =mysql_fetch_assoc($result))
 ?>
 
 		<?php
-			if($employee['class']=="Major")
+			if($employee['status']=="Active")
 				echo '<tr class="active hv">';
 			else 
 				echo '<tr class="inactive hv">';
@@ -167,8 +171,13 @@ while($employee =mysql_fetch_assoc($result))
 					<?php echo $employee['address']?>
 				</td>
 				
-				<td>
+				<td id="showtime">
 					<?php echo $employee['class']?>
+				</td>
+				
+				<td onclick="changeStatus(this)">
+					<?php echo $employee['status']?>
+					<input type="hidden" value="<?php echo $employee['id']?>" name="id"/>
 				</td>
 				
 				
@@ -192,6 +201,7 @@ mysql_close($con);
 
 
 	</body>
+	<script type="text/javascript" src="view.js"></script>
 	
 
 </html>
