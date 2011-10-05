@@ -27,7 +27,7 @@ $con = dbConnect();
 		<link type="text/css" rel="stylesheet" href="reg.css"/>
 	</head>
 	<body class="page2">
-		
+		<div id="content">
 		<h1> Employee Details</h1>
 		<br/>
 	    <form method="post">
@@ -71,6 +71,10 @@ $con = dbConnect();
 				
 				<th>
 					Status
+				</th>
+				
+				<th>
+					Edit
 				</th>
 			
 			</tr>
@@ -180,6 +184,10 @@ while($employee =mysql_fetch_assoc($result))
 					<input type="hidden" value="<?php echo $employee['id']?>" name="id"/>
 				</td>
 				
+				<td>
+					<button onclick = "edit(this)" id="<?php echo $employee['id']?>">Edit</button>
+				</td>
+				
 				
 			</tr>
 			<?php
@@ -196,7 +204,7 @@ mysql_close($con);
 		<button type="button">Add Employees</button>
 	</a>
 	
-	
+	</div>
 	
 
 
